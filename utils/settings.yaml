@@ -1,0 +1,26 @@
+
+training_id   : '3lay_size16' # Identifier for the output files from this training
+model_type    : 'FC' # FC, conv, LSTM, LSTM2
+dataset       : 'NGSIM' # 'Argoverse', 'NGSIM', 'Fusion'
+feature_size : 16
+train_kalman  : True
+num_workers   : 0 # how many subprocesses to use for data loading. 0 means that the data will be loaded in the main process.
+load_name     : '' # Name of the weights file to load, '' for random intitialization
+use_nll_loss  : True # Set to True to train with NLL loss False to train with MSE loss
+n_epochs      : 4
+batch_size    : 128
+lr            : 0.0003 # Learning rate
+optimizer     : Adam # Adam, SGD
+print_every_n : 100 # Print the loss and metrics in the terminal every n batch
+device        : 'cpu' # 'cpu', 'cuda', '' put '' for default (cuda if available cpu else)
+time_pred : 5 # Minimum value between this and the data sequence length will be used
+down_sampling : 2 # Downsampling factor on the data ex: 1 no downsampling, 2 only use half of the observations
+random_rotation : False # Apply random rotation to the input scene before feeding it to the model
+random_translation : False # Apply a random translation to the input scene before feeding it to the model
+normalize_angle : False # Apply a rotation to each scene to align the x axis with the ego heading
+
+argoverse_data_directory : '../Argoverse/'
+#argoverse_data_directory : '../Argoverse/'
+NGSIM_data_directory : '../CS230_Project/conv_social_pooling/data/'
+NGSIM_test_data_directory : './data/'
+fusion_data_directory : '../data_fusion/SUV_TF_60kkm/'
